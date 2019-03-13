@@ -3,8 +3,8 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from gui.qtview import Ui_MplMainWindow
-import random
-from collections import Counter
+from logic import builder
+
 
 class StartWindow(QMainWindow):
 
@@ -15,21 +15,9 @@ class StartWindow(QMainWindow):
         self.init_signals()
 
     def init_signals(self):
-        self.mui.button_build.clicked.connect(self.build_plot)
-
-    def build_plot(self):
-        max = int(self.mui.lineEdit_max.text())
-        min = int(self.mui.lineEdit_min.text())
-        count = int(self.mui.lineEdit_count.text())
-
-        lable = Counter([random.randint(min, max) for i in range(count)])
-        print('lable=', lable)
-
-        names, value = list(), list()
-        for k, v in lable.items():
-            names.append(str(k))
-            value.append(v)
-        self.mui.mpl.set_axes(xarray=names, yarray=value)
+        self.mui.button_build.clicked.connect(
+            lambda: builder.build_plot(self.mui)
+        )
 
 
 if __name__ == '__main__':

@@ -1,4 +1,3 @@
-from PyQt5 import QtGui
 from PyQt5.QtWidgets import QWidget, QSizePolicy, QVBoxLayout
 
 from matplotlib.backends.backend_qt5agg \
@@ -6,11 +5,19 @@ from matplotlib.backends.backend_qt5agg \
 from matplotlib.figure import Figure
 
 
+def draw_plot(build_fun):
+    def wrapper(self, *args, **kwargs):
+        print(*args)
+        self.canvas.axes.clear()
+        build_fun(self, *args, **kwargs)
+        self.canvas.draw()
+    return wrapper
+
+
 class MplCanvas(FigureCanvas):
     def __init__(self):
         self.fig = Figure()
         self.axes = self.fig.add_subplot(111)
-        # self.axes.plot([0, 5], [5, 8])
 
         FigureCanvas.__init__(self, self.fig)
         FigureCanvas.setSizePolicy(self, QSizePolicy.Expanding,
@@ -27,9 +34,9 @@ class MplWidget(QWidget):
         self.vbl.addWidget(self.canvas)
         self.setLayout(self.vbl)
 
-    def set_axes(self, xarray='', yarray='', *args):
-        self.canvas.axes.clear()
-        self.canvas.axes.bar(xarray, yarray, *args)
-        self.canvas.draw()
-
+    @draw_plot
+    def build_bar(self, clnames, clvalue, grid=True, **kwargs):
+        if grid:
+            self.canvas.axes.grid(color='b', linestyle='--', linewidth=0.5)
+        self.canvas.axes.bar(clnames, clvalue, **kwargs)
 
