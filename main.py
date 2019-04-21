@@ -15,7 +15,7 @@ class StartWindow(QMainWindow):
         self.init_signals()
 
     def init_signals(self):
-        self.mui.button_build.clicked.connect(
+        self.mui.button_start_test.clicked.connect(
             lambda: builder.build_plot(self.mui)
         )
 

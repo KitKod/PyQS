@@ -4,9 +4,9 @@ from .model import random_state
 
 
 def build_plot(mui):
-    max = int(mui.lineEdit_max.text())
-    min = int(mui.lineEdit_min.text())
-    count = int(mui.lineEdit_count.text())
+    max = int(mui.lineEdit_count_fire_engine.text())
+    min = int(mui.lineEdit_time_of_modeling.text())
+    count = 6
 
     if count > 50:
         msg_box = QMessageBox()
