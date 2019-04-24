@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qtview.ui'
+# Form implementation generated from reading ui file 'gui/qtview.ui'
 #
 # Created by: PyQt5 UI code generator 5.12
 #
@@ -29,7 +29,6 @@ class Ui_MplMainWindow(object):
         self.comboBox_inter_fires.setSizePolicy(sizePolicy)
         self.comboBox_inter_fires.setMinimumSize(QtCore.QSize(140, 0))
         self.comboBox_inter_fires.setObjectName("comboBox_inter_fires")
-        self.comboBox_inter_fires.addItem("")
         self.verticalLayout.addWidget(self.comboBox_inter_fires)
         self.comboBox_time_of_putout = QtWidgets.QComboBox(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -39,7 +38,6 @@ class Ui_MplMainWindow(object):
         self.comboBox_time_of_putout.setSizePolicy(sizePolicy)
         self.comboBox_time_of_putout.setMinimumSize(QtCore.QSize(140, 0))
         self.comboBox_time_of_putout.setObjectName("comboBox_time_of_putout")
-        self.comboBox_time_of_putout.addItem("")
         self.verticalLayout.addWidget(self.comboBox_time_of_putout)
         self.lineEdit_count_fire_engine = QtWidgets.QLineEdit(self.centralwidget)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
@@ -117,8 +115,6 @@ class Ui_MplMainWindow(object):
     def retranslateUi(self, MplMainWindow):
         _translate = QtCore.QCoreApplication.translate
         MplMainWindow.setWindowTitle(_translate("MplMainWindow", "MainWindow"))
-        self.comboBox_inter_fires.setItemText(0, _translate("MplMainWindow", "Normal"))
-        self.comboBox_time_of_putout.setItemText(0, _translate("MplMainWindow", "Normal"))
         self.lineEdit_count_fire_engine.setPlaceholderText(_translate("MplMainWindow", "Count of fire engine"))
         self.lineEdit_time_of_modeling.setPlaceholderText(_translate("MplMainWindow", "Time of modeling"))
         self.button_start_test.setText(_translate("MplMainWindow", "Start"))
