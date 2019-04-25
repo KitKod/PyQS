@@ -1,5 +1,5 @@
 import simpy
-from actors import FireGenerator
+from .actors import FireGenerator
 import random
 from collections import Counter
 
@@ -15,14 +15,27 @@ from collections import Counter
 #     return names, values
 
 
-def start(c_engines):
+def test(cnt_engines, model_time, fire_delay, putout_delay):
     env = simpy.Environment()
-    fire_station = simpy.Resource(env, capacity = c_engines)
-    fire_generator = FireGenerator(2, 6)
+    fire_station = simpy.Resource(env, capacity = cnt_engines)
+    fire_generator = FireGenerator(fire_delay)
 
-    env.process(fire_generator.create_fire(env, fire_station))
-    env.run(200)
+    env.process(fire_generator.create_fire(env, fire_station, putout_delay))
+    env.run(model_time)
+
+
+
+def stat():
+    pass
+
+
+def regres():
+    pass
+
+
+def transient():
+    pass
 
 
 if __name__ == '__main__':
-    start(1)
+    test(1)

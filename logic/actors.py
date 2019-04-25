@@ -1,4 +1,4 @@
-from scipy.stats import truncnorm
+from .builder import size_queue, time_q
 
 
 class Fire:
@@ -8,7 +8,7 @@ class Fire:
         self.level = level
         self.points = points
 
-    def burn(self, env, fire_station):
+    def burn(self, env, fire_station, putout_delay):
         print('I am #{} burning... Now={}'.format(self.id, env.now))
 
         with fire_station.request() as req_engine:
@@ -17,29 +17,28 @@ class Fire:
             # Start put out this fire
             print('Engine #{} start put out me.. Now={}'.format(self.id, env.now))
             print('In queue now is about={}'.format(len(fire_station.queue)))
-            yield env.timeout(24)
+
+            size_queue.append(len(fire_station.queue))
+            time_q.append(env.now)
+
+            yield env.timeout(putout_delay)
             print('Stop #{} put out me.. Now={}'.format(self.id, env.now))
 
 
 class FireGenerator:
 
-    def __init__(self, min_edge, max_edge):
-        self.min_edge = min_edge
-        self.max_edge = max_edge
+    def __init__(self, delay):
+        self.delay = delay
 
-    def create_fire(self, env, fire_station):
+    def create_fire(self, env, fire_station, putout_delay):
         i = 1
         while True:
-            scale = (self.max_edge + self.min_edge) / 2
-            delay = truncnorm(a = self.min_edge / scale,
-                              b = self.max_edge / scale,
-                              scale = scale).rvs().round().astype(int)
-            print('Delay', delay)
+            print('Delay', self.delay)
 
             fire = Fire(i, 10, 11)
-            env.process(fire.burn(env, fire_station))
+            env.process(fire.burn(env, fire_station, putout_delay))
             i += 1
 
-            yield env.timeout(delay)
+            yield env.timeout(self.delay)
 
 

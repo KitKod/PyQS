@@ -1,6 +1,9 @@
 from PyQt5.QtWidgets import QMessageBox
 
-from .model import random_state
+
+# from .model import random_state
+size_queue = list()
+time_q =  list()
 
 
 def build_plot(mui):
