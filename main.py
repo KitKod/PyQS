@@ -3,8 +3,7 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 
 from gui.qtview import Ui_MplMainWindow
-from Defs import DISTRIBUTION_LAWS
-from control import launch_test, show_dialog
+from control import launch_test
 
 
 class StartWindow(QMainWindow):
@@ -21,13 +20,8 @@ class StartWindow(QMainWindow):
             lambda: launch_test(self.mui)
         )
 
-        self.mui.comboBox_inter_fires.activated.connect(lambda: show_dialog(self.mui, 0))
-        self.mui.comboBox_time_of_putout.activated.connect(lambda: show_dialog(self.mui, 1))
-
-
     def init_widgets(self):
-        self.mui.comboBox_inter_fires.addItems(DISTRIBUTION_LAWS)
-        self.mui.comboBox_time_of_putout.addItems(DISTRIBUTION_LAWS)
+        pass
 
 
 if __name__ == '__main__':

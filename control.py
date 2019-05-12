@@ -45,29 +45,6 @@ class StartData:
 sd = StartData((1, 5), (2, 10))
 
 
-def show_dialog(mui, mode):
-    layout = QVBoxLayout()
-    le_mu = QLineEdit()
-    le_range = QLineEdit()
-    button_ok = QPushButton('Ok')
-    button_cancel = QPushButton('Cancel')
-
-    layout.addWidget(le_mu)
-    layout.addWidget(le_range)
-    layout.addWidget(button_ok)
-    layout.addWidget(button_cancel)
-
-    i = QDialog()
-    i.setLayout(layout)
-
-    if mode == 0:
-        button_ok.clicked.connect(lambda: sd.set_fire_value((int(le_mu.text()), int(le_range.text())), i))
-    else:
-        button_ok.clicked.connect(lambda: sd.set_putout_value((int(le_mu.text()), int(le_range.text())), i))
-
-    button_cancel.clicked.connect(lambda: i.close())
-    i.exec()
-
 
 def launch_test(mui):
     cnt_engines = int(mui.lineEdit_count_fire_engine.text())
