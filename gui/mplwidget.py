@@ -39,9 +39,3 @@ class MplWidget(QWidget):
         if grid:
             self.canvas.axes.grid(color='b', linestyle='--', linewidth=0.5)
         self.canvas.axes.bar(clnames, clvalue, **kwargs)
-
-    @draw_plot
-    def build_hist(self):
-        x = [1, 2, 3, 4, 1, 1 , 1]
-        num_bins = 6
-        self.canvas.axes.hist(x, align='left')

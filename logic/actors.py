@@ -1,14 +1,20 @@
 from .builder import size_queue, time_q
+import random
+
+
+class Engine:
+
+    def __init__(self):
+        pass
 
 
 class Fire:
 
-    def __init__(self, id, level, points):
+    def __init__(self, id, burning_time):
         self.id = id
-        self.level = level
-        self.points = points
+        self.burning_time = burning_time  ## Сможет ли машина потушить пожар.
 
-    def burn(self, env, fire_station, putout_delay):
+    def burn(self, env, fire_station):
         print('I am #{} burning... Now={}'.format(self.id, env.now))
 
         with fire_station.request() as req_engine:
@@ -21,24 +27,37 @@ class Fire:
             size_queue.append(len(fire_station.queue))
             time_q.append(env.now)
 
-            yield env.timeout(putout_delay)
+            yield env.timeout(random.randint(10, 25))  ## Заглушка поманять на данные из GUI.
             print('Stop #{} put out me.. Now={}'.format(self.id, env.now))
 
 
 class FireGenerator:
 
-    def __init__(self, delay):
-        self.delay = delay
+    def __init__(self, fire_inter_max, fire_inter_min, burn_time_max,
+                 burn_time_min):
+        self.fire_inter_max = fire_inter_max
+        self.fire_inter_min = fire_inter_min
+        self.burn_time_max = burn_time_max
+        self.burn_time_min = burn_time_min
 
-    def create_fire(self, env, fire_station, putout_delay):
+    def create_fire(self, env, fire_station):
         i = 1
         while True:
-            print('Delay', self.delay)
+            burning_time = random.randint(self.burn_time_min,
+                                          self.burn_time_max)
+            if burning_time <= 0:
+                burning_time = self.burn_time_max
 
-            fire = Fire(i, 10, 11)
-            env.process(fire.burn(env, fire_station, putout_delay))
+            fire = Fire(i, burning_time)
+            env.process(fire.burn(env, fire_station))
+
+            delay = random.randint(self.fire_inter_min, self.fire_inter_max)
+            if delay <= 0:
+                delay = self.fire_inter_max
+
+            print('Delay={}; burning={}', delay, burning_time)
             i += 1
 
-            yield env.timeout(self.delay)
+            yield env.timeout(delay)
 
 
