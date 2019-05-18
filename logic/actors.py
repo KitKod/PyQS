@@ -14,9 +14,13 @@ class Fire:
         self.id = id
         self.burning_time = burning_time  ## Сможет ли машина потушить пожар.
 
-    def burn(self, env, fire_station):
+    def burn(self, env, fire_station, serv_max, serv_min):
         print('I am #{} burning... Now={}'.format(self.id, env.now))
 
+
+        size_queue.append(len(fire_station.queue))
+        time_q.append(env.now)
+        print("TEST", len(fire_station.queue))
         with fire_station.request() as req_engine:
             yield req_engine
 
@@ -27,7 +31,7 @@ class Fire:
             size_queue.append(len(fire_station.queue))
             time_q.append(env.now)
 
-            yield env.timeout(random.randint(10, 25))  ## Заглушка поманять на данные из GUI.
+            yield env.timeout(random.randint(serv_min, serv_max))
             print('Stop #{} put out me.. Now={}'.format(self.id, env.now))
 
 
@@ -40,7 +44,7 @@ class FireGenerator:
         self.burn_time_max = burn_time_max
         self.burn_time_min = burn_time_min
 
-    def create_fire(self, env, fire_station):
+    def create_fire(self, env, fire_station, serv_max, serv_min):
         i = 1
         while True:
             burning_time = random.randint(self.burn_time_min,
@@ -49,7 +53,7 @@ class FireGenerator:
                 burning_time = self.burn_time_max
 
             fire = Fire(i, burning_time)
-            env.process(fire.burn(env, fire_station))
+            env.process(fire.burn(env, fire_station, serv_max, serv_min))
 
             delay = random.randint(self.fire_inter_min, self.fire_inter_max)
             if delay <= 0:
