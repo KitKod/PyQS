@@ -1,5 +1,5 @@
 from logic.model import Test
-from logic.builder import size_queue, time_q
+from logic.builder import show_graph
 
 
 def launch_test(mui):
@@ -24,8 +24,4 @@ def launch_test(mui):
                 cnt_average_engin, cnt_small_engin, serv_max, serv_min)
 
     test.run()
-
-    mui.mpl.build_plot(time_q, size_queue)
-    size_queue.clear()
-    time_q.clear()
-
+    show_graph(mui)

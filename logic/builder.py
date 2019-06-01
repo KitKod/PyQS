@@ -1,7 +1,11 @@
-from PyQt5.QtWidgets import QMessageBox
+from Defs import StatisticHolder
 
-size_queue = list()
-time_q = list()
+
+def show_graph(mui):
+    stat_holder = StatisticHolder.getInstance()
+    mui.mpl.build_plot(stat_holder.time_q, stat_holder.size_queue)
+    stat_holder.clear_stat()
+
 
 
 # def build_plot(mui):

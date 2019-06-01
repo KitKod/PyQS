@@ -30,7 +30,6 @@ class MplCanvas(FigureCanvas):
     def customize_axes(self):
         self.fig.subplots_adjust(hspace = 0.6)
         self.axes_queue_time.set_title('Queue-Time')
-
         self.axes1.set_title('Second-Axes')
 
 
@@ -48,6 +47,7 @@ class MplWidget(QWidget):
         if grid:
             self.canvas.axes_queue_time.grid(color= 'b', linestyle= '--',
                                              linewidth=0.5)
+        self.canvas.axes_queue_time.set_title('Queue-Time')
         self.canvas.axes_queue_time.set_xlabel('time')
         self.canvas.axes_queue_time.set_ylabel('size queue')
         self.canvas.axes_queue_time.plot(clnames, clvalue, **kwargs)

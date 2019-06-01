@@ -1,5 +1,5 @@
 import simpy
-from .actors import FireGenerator
+from .actors import FireGenerator, FireStation, Engine
 
 
 class Test:
@@ -20,10 +20,24 @@ class Test:
         self.serv_max = serv_max
         self.serv_min = serv_min
 
+    def create_engn_park(self, cnt_big, cnt_avg, cnt_small):
+        return {
+            'bigs': [Engine() for e in range(cnt_big)],
+            'avgs': [Engine() for e in range(cnt_avg)],
+            'smalls': [Engine() for e in range(cnt_small)]
+        }
+
+
     def run(self):
         env = simpy.Environment()
-        fire_station = simpy.Resource(env, capacity = self.total_engines)
-        # fire_station.
+        container = simpy.Container(env, capacity = self.total_engines,
+                                        init = self.total_engines)
+
+        fire_station = FireStation(env, container,
+                                   self.create_engn_park(self.cnt_big_engin,
+                                                         self.cnt_average_engin,
+                                                         self.cnt_small_engin))
+
         fire_generator = FireGenerator(self.fire_inter_max,
                                        self.fire_inter_min,
                                        self.burn_time_max,
