@@ -620,6 +620,19 @@
        </layout>
       </item>
       <item>
+       <widget class="QPushButton" name="button_start_test">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="text">
+         <string>Start</string>
+        </property>
+       </widget>
+      </item>
+      <item>
        <spacer name="verticalSpacer">
         <property name="orientation">
          <enum>Qt::Vertical</enum>
@@ -658,19 +671,6 @@
               </property>
              </widget>
             </item>
-            <item alignment="Qt::AlignRight">
-             <widget class="QPushButton" name="button_start_test">
-              <property name="sizePolicy">
-               <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
-                <horstretch>0</horstretch>
-                <verstretch>0</verstretch>
-               </sizepolicy>
-              </property>
-              <property name="text">
-               <string>Start</string>
-              </property>
-             </widget>
-            </item>
            </layout>
           </item>
          </layout>
@@ -679,6 +679,22 @@
          <attribute name="title">
           <string>Tab 2</string>
          </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout">
+          <item>
+           <layout class="QVBoxLayout" name="VLay_tabtest_graph_2">
+            <item>
+             <widget class="MplStatWidget" name="mpl_stat" native="true">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
         </widget>
        </widget>
       </item>
@@ -720,6 +736,12 @@
    <class>MplWidget</class>
    <extends>QWidget</extends>
    <header>mplwidget</header>
+   <container>1</container>
+  </customwidget>
+  <customwidget>
+   <class>MplStatWidget</class>
+   <extends>QWidget</extends>
+   <header>mplstatwidget.h</header>
    <container>1</container>
   </customwidget>
  </customwidgets>

@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-# Form implementation generated from reading ui file 'qtview.ui'
+# Form implementation generated from reading ui file 'gui/qtview.ui'
 #
 # Created by: PyQt5 UI code generator 5.12
 #
@@ -320,6 +320,14 @@ class Ui_MplMainWindow(object):
         self.line_16.setObjectName("line_16")
         self.GLay_settings.addWidget(self.line_16, 10, 1, 1, 1)
         self.VLay_left_bar.addLayout(self.GLay_settings)
+        self.button_start_test = QtWidgets.QPushButton(self.centralwidget)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.button_start_test.sizePolicy().hasHeightForWidth())
+        self.button_start_test.setSizePolicy(sizePolicy)
+        self.button_start_test.setObjectName("button_start_test")
+        self.VLay_left_bar.addWidget(self.button_start_test)
         spacerItem1 = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.VLay_left_bar.addItem(spacerItem1)
         self.horizontalLayout_3.addLayout(self.VLay_left_bar)
@@ -341,18 +349,23 @@ class Ui_MplMainWindow(object):
         self.mpl.setSizePolicy(sizePolicy)
         self.mpl.setObjectName("mpl")
         self.VLay_tabtest_graph.addWidget(self.mpl)
-        self.button_start_test = QtWidgets.QPushButton(self.tab_test)
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.button_start_test.sizePolicy().hasHeightForWidth())
-        self.button_start_test.setSizePolicy(sizePolicy)
-        self.button_start_test.setObjectName("button_start_test")
-        self.VLay_tabtest_graph.addWidget(self.button_start_test, 0, QtCore.Qt.AlignRight)
         self.verticalLayout_4.addLayout(self.VLay_tabtest_graph)
         self.tabWidget.addTab(self.tab_test, "")
         self.tab_stat = QtWidgets.QWidget()
         self.tab_stat.setObjectName("tab_stat")
+        self.verticalLayout = QtWidgets.QVBoxLayout(self.tab_stat)
+        self.verticalLayout.setObjectName("verticalLayout")
+        self.VLay_tabtest_graph_2 = QtWidgets.QVBoxLayout()
+        self.VLay_tabtest_graph_2.setObjectName("VLay_tabtest_graph_2")
+        self.mpl_stat = MplStatWidget(self.tab_stat)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Minimum)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.mpl_stat.sizePolicy().hasHeightForWidth())
+        self.mpl_stat.setSizePolicy(sizePolicy)
+        self.mpl_stat.setObjectName("mpl_stat")
+        self.VLay_tabtest_graph_2.addWidget(self.mpl_stat)
+        self.verticalLayout.addLayout(self.VLay_tabtest_graph_2)
         self.tabWidget.addTab(self.tab_stat, "")
         self.VLay_right_bar.addWidget(self.tabWidget)
         self.horizontalLayout_3.addLayout(self.VLay_right_bar)
@@ -407,4 +420,5 @@ class Ui_MplMainWindow(object):
         self.mplactionQuit.setText(_translate("MplMainWindow", "&Quit"))
 
 
+from .mplstatwidget import MplStatWidget
 from .mplwidget import MplWidget
