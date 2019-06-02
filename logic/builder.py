@@ -3,7 +3,8 @@ from Defs import StatisticHolder
 
 def show_graph(mui):
     stat_holder = StatisticHolder.getInstance()
-    mui.mpl.build_plot(stat_holder.time_q, stat_holder.size_queue)
+    mui.mpl.build_plot(stat_holder.time_q, stat_holder.size_queue,
+                       stat_holder.time_fire_bad, stat_holder.count_fire_bad, stat_holder.time_fire_ok, stat_holder.count_fire_ok)
     stat_holder.clear_stat()
 
 

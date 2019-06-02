@@ -9,6 +9,7 @@ def draw_plot(build_fun):
     def wrapper(self, *args, **kwargs):
         print(*args)
         self.canvas.axes_queue_time.clear()
+        self.canvas.axes_putout.clear()
         build_fun(self, *args, **kwargs)
         self.canvas.draw()
     return wrapper
@@ -19,7 +20,7 @@ class MplCanvas(FigureCanvas):
         self.fig = Figure()
 
         self.axes_queue_time = self.fig.add_subplot(211)
-        self.axes1 = self.fig.add_subplot(212)
+        self.axes_putout = self.fig.add_subplot(212)
         self.customize_axes()
 
         FigureCanvas.__init__(self, self.fig)
@@ -30,7 +31,11 @@ class MplCanvas(FigureCanvas):
     def customize_axes(self):
         self.fig.subplots_adjust(hspace = 0.6)
         self.axes_queue_time.set_title('Queue-Time')
-        self.axes1.set_title('Second-Axes')
+        self.axes_putout.set_title('Second-Axes')
+
+        self.axes_putout.set_title('Burn/Not Burn')
+        self.axes_putout.set_xlabel('time')
+        self.axes_putout.set_ylabel('count')
 
 
 class MplWidget(QWidget):
@@ -43,14 +48,24 @@ class MplWidget(QWidget):
         self.setLayout(self.vbl)
 
     @draw_plot
-    def build_plot(self, clnames, clvalue, grid=True, **kwargs):
+    def build_plot(self, clnames, clvalue, x_putout_queue, y_putout_count, x_putout_queue_ok, y_putout_count_ok, grid=True, **kwargs):
         if grid:
             self.canvas.axes_queue_time.grid(color= 'b', linestyle= '--',
                                              linewidth=0.5)
+            self.canvas.axes_putout.grid(color = 'b', linestyle = '--',
+                                             linewidth = 0.5)
         self.canvas.axes_queue_time.set_title('Queue-Time')
         self.canvas.axes_queue_time.set_xlabel('time')
         self.canvas.axes_queue_time.set_ylabel('size queue')
+
+        self.canvas.axes_putout.set_title('Burn/Not Burn')
+        self.canvas.axes_putout.set_xlabel('time')
+        self.canvas.axes_putout.set_ylabel('count')
+
         self.canvas.axes_queue_time.plot(clnames, clvalue, **kwargs)
+        self.canvas.axes_putout.plot(x_putout_queue, y_putout_count, 'r',
+                                     x_putout_queue_ok, y_putout_count_ok, 'b')
+
 
     @draw_plot
     def build_bar(self, clnames, clvalue, grid = True, **kwargs):
