@@ -31,10 +31,7 @@ class MplCanvas(FigureCanvas):
     def customize_axes(self):
         self.fig.subplots_adjust(hspace = 0.6)
         self.axes_queue_time.set_title('Queue-Time')
-
-        self.axes_putout.set_title('Burn/Not Burn')
-        self.axes_putout.set_xlabel('time')
-        self.axes_putout.set_ylabel('count')
+        self.axes_putout.set_title('Extinguished/Not-Extinguished')
 
 
 class MplWidget(QWidget):
@@ -57,7 +54,7 @@ class MplWidget(QWidget):
         self.canvas.axes_queue_time.set_xlabel('time')
         self.canvas.axes_queue_time.set_ylabel('size queue')
 
-        self.canvas.axes_putout.set_title('Burn/Not Burn')
+        self.canvas.axes_putout.set_title('Extinguished/Not-Extinguished')
         self.canvas.axes_putout.set_xlabel('time')
         self.canvas.axes_putout.set_ylabel('count')
 

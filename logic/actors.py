@@ -215,10 +215,9 @@ class Fire:
 
 class FireGenerator:
 
-    def __init__(self, fire_inter_max, fire_inter_min, burn_time_max,
+    def __init__(self, fire_inter_max, burn_time_max,
                  burn_time_min):
         self.fire_inter_max = fire_inter_max
-        self.fire_inter_min = fire_inter_min
         self.burn_time_max = burn_time_max
         self.burn_time_min = burn_time_min
 
@@ -233,7 +232,8 @@ class FireGenerator:
             fire = Fire(i, burning_time)
             env.process(fire_station.register_fire(fire, serv_max, serv_min))
 
-            delay = random.randint(self.fire_inter_min, self.fire_inter_max)
+            # delay = random.randint(self.fire_inter_min, self.fire_inter_max)
+            delay = int(random.expovariate(1 / self.fire_inter_max))
             if delay <= 0:
                 delay = self.fire_inter_max
 

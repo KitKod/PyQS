@@ -8,7 +8,6 @@ def launch_test(mui):
         model_time = int(mui.LEdit_time_of_modeling.text())
 
         fire_inter_max = int(mui.LEdit_dist_fireinter_max.text())
-        fire_inter_min = int(mui.LEdit_dist_fireinter_min.text())
 
         burn_time_max = int(mui.LEdit_dist_burntime_max.text())
         burn_time_min = int(mui.LEdit_dist_burntime_min.text())
@@ -23,7 +22,7 @@ def launch_test(mui):
         if (cnt_big_engin + cnt_average_engin + cnt_small_engin) != total_engines:
             raise SyntaxError
 
-        test = Test(total_engines, model_time, fire_inter_max, fire_inter_min,
+        test = Test(total_engines, model_time, fire_inter_max,
                     burn_time_max, burn_time_min, cnt_big_engin,
                     cnt_average_engin, cnt_small_engin, serv_max, serv_min)
         test.run()

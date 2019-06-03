@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>909</width>
-    <height>549</height>
+    <width>938</width>
+    <height>634</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -23,6 +23,121 @@
       <property name="sizeConstraint">
        <enum>QLayout::SetDefaultConstraint</enum>
       </property>
+      <item>
+       <widget class="QLabel" name="label_name_distribution_2">
+        <property name="sizePolicy">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+          <horstretch>0</horstretch>
+          <verstretch>0</verstretch>
+         </sizepolicy>
+        </property>
+        <property name="font">
+         <font>
+          <pointsize>11</pointsize>
+          <weight>50</weight>
+          <italic>false</italic>
+          <bold>false</bold>
+          <underline>false</underline>
+          <strikeout>false</strikeout>
+         </font>
+        </property>
+        <property name="autoFillBackground">
+         <bool>false</bool>
+        </property>
+        <property name="styleSheet">
+         <string notr="true"/>
+        </property>
+        <property name="frameShape">
+         <enum>QFrame::NoFrame</enum>
+        </property>
+        <property name="frameShadow">
+         <enum>QFrame::Plain</enum>
+        </property>
+        <property name="lineWidth">
+         <number>3</number>
+        </property>
+        <property name="text">
+         <string>Exponential distribution</string>
+        </property>
+        <property name="textFormat">
+         <enum>Qt::AutoText</enum>
+        </property>
+        <property name="alignment">
+         <set>Qt::AlignCenter</set>
+        </property>
+        <property name="wordWrap">
+         <bool>false</bool>
+        </property>
+        <property name="indent">
+         <number>-1</number>
+        </property>
+        <property name="openExternalLinks">
+         <bool>false</bool>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <widget class="Line" name="line_2">
+        <property name="orientation">
+         <enum>Qt::Horizontal</enum>
+        </property>
+       </widget>
+      </item>
+      <item>
+       <layout class="QGridLayout" name="gridLayout">
+        <item row="1" column="1">
+         <widget class="QLineEdit" name="LEdit_dist_fireinter_max">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="maximumSize">
+           <size>
+            <width>75</width>
+            <height>16777215</height>
+           </size>
+          </property>
+          <property name="maxLength">
+           <number>8</number>
+          </property>
+          <property name="placeholderText">
+           <string>Average</string>
+          </property>
+         </widget>
+        </item>
+        <item row="1" column="0">
+         <widget class="QLabel" name="label_fire_interval">
+          <property name="sizePolicy">
+           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+            <horstretch>0</horstretch>
+            <verstretch>0</verstretch>
+           </sizepolicy>
+          </property>
+          <property name="text">
+           <string>Fire interval</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <spacer name="verticalSpacer_3">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>100</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
       <item>
        <widget class="QLabel" name="label_name_distribution">
         <property name="sizePolicy">
@@ -77,7 +192,7 @@
        </widget>
       </item>
       <item>
-       <widget class="Line" name="line_2">
+       <widget class="Line" name="line_3">
         <property name="orientation">
          <enum>Qt::Horizontal</enum>
         </property>
@@ -85,14 +200,14 @@
       </item>
       <item>
        <layout class="QGridLayout" name="HLay_distribution">
-        <item row="4" column="2">
+        <item row="3" column="2">
          <widget class="Line" name="line_18">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
          </widget>
         </item>
-        <item row="2" column="3">
+        <item row="1" column="3">
          <widget class="QLineEdit" name="LEdit_dist_burntime_min">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -114,7 +229,7 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="1">
+        <item row="1" column="1">
          <widget class="QLineEdit" name="LEdit_dist_burntime_max">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -136,80 +251,10 @@
           </property>
          </widget>
         </item>
-        <item row="2" column="0">
+        <item row="1" column="0">
          <widget class="QLabel" name="label_burning_interval">
           <property name="text">
            <string>Burning time</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="QLabel" name="label_fire_interval">
-          <property name="text">
-           <string>Fire interval</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLineEdit" name="LEdit_dist_fireinter_min">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="acceptDrops">
-           <bool>false</bool>
-          </property>
-          <property name="autoFillBackground">
-           <bool>false</bool>
-          </property>
-          <property name="maxLength">
-           <number>8</number>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
-          </property>
-          <property name="dragEnabled">
-           <bool>false</bool>
-          </property>
-          <property name="placeholderText">
-           <string>Min</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLineEdit" name="LEdit_dist_fireinter_max">
-          <property name="sizePolicy">
-           <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
-            <horstretch>0</horstretch>
-            <verstretch>0</verstretch>
-           </sizepolicy>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>75</width>
-            <height>16777215</height>
-           </size>
-          </property>
-          <property name="maxLength">
-           <number>8</number>
-          </property>
-          <property name="placeholderText">
-           <string>Max</string>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="Line" name="line_3">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
@@ -220,28 +265,14 @@
           </property>
          </widget>
         </item>
-        <item row="1" column="3">
-         <widget class="Line" name="line_5">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="2" column="2">
+        <item row="1" column="2">
          <widget class="Line" name="line_6">
           <property name="orientation">
            <enum>Qt::Vertical</enum>
           </property>
          </widget>
         </item>
-        <item row="1" column="0">
-         <widget class="Line" name="line_17">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-         </widget>
-        </item>
-        <item row="4" column="3">
+        <item row="3" column="3">
          <widget class="QLineEdit" name="LEdit_dist_service_min">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -263,14 +294,14 @@
           </property>
          </widget>
         </item>
-        <item row="4" column="0">
+        <item row="3" column="0">
          <widget class="QLabel" name="label_service_time">
           <property name="text">
            <string>Service time</string>
           </property>
          </widget>
         </item>
-        <item row="4" column="1">
+        <item row="3" column="1">
          <widget class="QLineEdit" name="LEdit_dist_service_max">
           <property name="sizePolicy">
            <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
@@ -292,21 +323,21 @@
           </property>
          </widget>
         </item>
-        <item row="3" column="0">
+        <item row="2" column="0">
          <widget class="Line" name="line_19">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
-        <item row="3" column="1">
+        <item row="2" column="1">
          <widget class="Line" name="line_20">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
           </property>
          </widget>
         </item>
-        <item row="3" column="3">
+        <item row="2" column="3">
          <widget class="Line" name="line_21">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -373,7 +404,7 @@
           </property>
          </widget>
         </item>
-        <item row="10" column="0">
+        <item row="13" column="0">
          <widget class="Line" name="line_12">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -610,7 +641,7 @@
           </property>
          </widget>
         </item>
-        <item row="10" column="1">
+        <item row="13" column="1">
          <widget class="Line" name="line_16">
           <property name="orientation">
            <enum>Qt::Horizontal</enum>
@@ -620,12 +651,34 @@
        </layout>
       </item>
       <item>
+       <spacer name="verticalSpacer_4">
+        <property name="orientation">
+         <enum>Qt::Vertical</enum>
+        </property>
+        <property name="sizeType">
+         <enum>QSizePolicy::Fixed</enum>
+        </property>
+        <property name="sizeHint" stdset="0">
+         <size>
+          <width>20</width>
+          <height>20</height>
+         </size>
+        </property>
+       </spacer>
+      </item>
+      <item>
        <widget class="QPushButton" name="button_start_test">
         <property name="sizePolicy">
-         <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+         <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
           <horstretch>0</horstretch>
           <verstretch>0</verstretch>
          </sizepolicy>
+        </property>
+        <property name="minimumSize">
+         <size>
+          <width>0</width>
+          <height>75</height>
+         </size>
         </property>
         <property name="text">
          <string>Start</string>
@@ -654,6 +707,47 @@
         <property name="currentIndex">
          <number>0</number>
         </property>
+        <widget class="QWidget" name="tab">
+         <attribute name="title">
+          <string>Technical Task</string>
+         </attribute>
+         <layout class="QVBoxLayout" name="verticalLayout_3">
+          <item>
+           <layout class="QVBoxLayout" name="verticalLayout_2">
+            <item>
+             <widget class="QPlainTextEdit" name="plainTextEdit">
+              <property name="readOnly">
+               <bool>true</bool>
+              </property>
+              <property name="plainText">
+               <string>ТЕХНІЧНЕ ЗАВДАННЯ
+
+на виконання розрахунково-графічної роботи з дисципліни «Моделювання»
+	Тема: Моделювання пожежної частини, Варіант « Diablo»
+	Виконавці: Камак М.Д., Демешко А.С., Патай А.В,, КІ-162.
+	Опис системи
+У місті Дьябло часто трапляються пожежі. Сигнал про пожежу надходить у пожежну частину й на гасіння пожежі виїжджає кілька пожежних машин. Якщо всі машини виїдуть на пожежу, то може виявитися, що іншу пожежу не буде кому гасити. Машини виїжджають, якщо вони є й готові до гасіння. Інформація про те, що пожежа закінчилася, не надходить, тому машина їде на пожежу у будь якому разі. Прибувши на пожежу, пожежні починають гасити її, у результаті чого час горіння й, відповідно, збитки від пожежі скорочуються. Але якщо машин мало, те засобів пожежегасіння може не вистачити, і тоді виявиться, що поїздка на пожежу була марною. Якщо пожежа вже догоріла, то машина відразу ж їде назад. Після повернення в пожежну частину машина проходить техобслуговування, після чого знову готова до гасіння. 
+	Завдання на проектування 
+	Створити Python застосування для імітаційного моделювання авіаперевезень, яке дозволить:
+	- налаштування параметрів моделі, а саме: кiлькiсть пожежних машин, кількість балів пожежі , кількість балів пожежної машини, час моделювання;
+	- проведення тестових запусків моделі при різних налаштуваннях з динамічною індикацією кількості машин на пожежній станції, довжини черги пожеж, кількість працюючих машин та кількість машин на технічне обслуговування та можливості виведення протоколу роботи моделі під час тестових запусків;
+	- проведення експериментів для отримання статистичних характеристик для довжини черги пожеж.
+
+Обсяг текстової документації
+Робота обсягом 10-15 с. формату А4
+Орієнтовна трудомісткість роботи  –  36 людино-годин.
+Дата представлення роботи  –  останній тиждень 2-го семестру
+
+Керівник роботи	
+доцент 	Пріла О.А.
+«21» лютого 2019 р. </string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </item>
+         </layout>
+        </widget>
         <widget class="QWidget" name="tab_test">
          <attribute name="title">
           <string>Test</string>
@@ -677,7 +771,7 @@
         </widget>
         <widget class="QWidget" name="tab_stat">
          <attribute name="title">
-          <string>Tab 2</string>
+          <string>Stat</string>
          </attribute>
          <layout class="QVBoxLayout" name="verticalLayout">
           <item>
@@ -707,7 +801,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>909</width>
+     <width>938</width>
      <height>30</height>
     </rect>
    </property>

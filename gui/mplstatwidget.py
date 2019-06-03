@@ -33,9 +33,6 @@ class MplCanvas(FigureCanvas):
         self.axes_stat_queue_frequency.set_title('Queue Frequency')
         self.axes_total_count_fire_put.set_title('Extinguishing Statistics')
 
-        # self.axes_total_count_fire_put.set_xlabel('time')
-        # self.axes_total_count_fire_put.set_ylabel('count')
-
 
 class MplStatWidget(QWidget):
 
@@ -58,9 +55,13 @@ class MplStatWidget(QWidget):
 
         if grid:
             self.canvas.axes_stat_queue_frequency.grid(color = 'b', linestyle = '--',
-                                                       linewidth = 0.5)
+                                                       linewidth = 0.5, axis = 'y')
+
+            self.canvas.axes_total_count_fire_put.grid(color = 'b',
+                                                       linestyle = '--',
+                                                       linewidth = 0.5,
+                                                       axis = 'y')
         self.canvas.axes_stat_queue_frequency.bar(clnames, clvalue, **kwargs)
         self.canvas.axes_total_count_fire_put.bar(['extinguished', 'not extinguished'],
                                                   [cout_of_fire_ok, count_of_fire_bad], **kwargs)
-
 
