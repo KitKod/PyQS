@@ -37,16 +37,3 @@ class Test:
                                                self.serv_max,
                                                self.serv_min))
         env.run(self.model_time)
-
-
-def stat():
-    pass
-
-
-def regres():
-    pass
-
-
-def transient():
-    pass
-

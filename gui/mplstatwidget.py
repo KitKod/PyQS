@@ -44,9 +44,12 @@ class MplStatWidget(QWidget):
         self.setLayout(self.vbl)
 
     @draw_plot
-    def build_bar(self, clnames, clvalue, cout_of_fire_ok, count_of_fire_bad, grid = True, **kwargs):
+    def build_bar(self, clnames, clvalue, cout_of_fire_ok, count_of_fire_bad,
+                  grid = True, **kwargs):
         self.canvas.axes_stat_queue_frequency.set_title('Queue Frequency')
-        self.canvas.axes_total_count_fire_put.set_title('Extinguishing Statistics')
+        self.canvas.axes_total_count_fire_put.set_title(
+            'Extinguishing Statistics'
+        )
 
         self.canvas.axes_stat_queue_frequency.set_xlabel('size of queue')
         self.canvas.axes_stat_queue_frequency.set_ylabel('frequency')
@@ -54,14 +57,22 @@ class MplStatWidget(QWidget):
         self.canvas.axes_total_count_fire_put.set_ylabel('count')
 
         if grid:
-            self.canvas.axes_stat_queue_frequency.grid(color = 'b', linestyle = '--',
-                                                       linewidth = 0.5, axis = 'y')
+            self.canvas.axes_stat_queue_frequency.grid(color = 'b',
+                                                       linestyle = '--',
+                                                       linewidth = 0.5,
+                                                       axis = 'y')
 
             self.canvas.axes_total_count_fire_put.grid(color = 'b',
                                                        linestyle = '--',
                                                        linewidth = 0.5,
                                                        axis = 'y')
-        self.canvas.axes_stat_queue_frequency.bar(clnames, clvalue, **kwargs)
-        self.canvas.axes_total_count_fire_put.bar(['extinguished', 'not extinguished'],
-                                                  [cout_of_fire_ok, count_of_fire_bad], **kwargs)
+        self.canvas.axes_stat_queue_frequency.bar(clnames,
+                                                  clvalue,
+                                                  color='br',
+                                                  **kwargs)
+        self.canvas.axes_total_count_fire_put.bar(['extinguished',
+                                                   'not extinguished'],
+                                                  [cout_of_fire_ok,
+                                                   count_of_fire_bad],
+                                                  color='br', **kwargs)
 

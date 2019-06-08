@@ -20,7 +20,7 @@ def show_stat_graphs(mui):
 
     count_fire_ok = stat_holder.count_fire_ok[-1] if stat_holder.count_fire_ok else 0
     count_fire_bad = stat_holder.count_fire_bad[-1] if stat_holder.count_fire_bad else 0
-    print('ok={}; bad={}'.format(count_fire_ok, count_fire_bad))
+
     mui.mpl_stat.build_bar(names, values, count_fire_ok, count_fire_bad)
     stat_holder.clear_stat()
 

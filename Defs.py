@@ -22,6 +22,8 @@ class StatisticHolder:
         self.count_fire_bad = list()
         self.time_fire_bad = list()
 
+        self.last_x = None
+
     def collect_stat_fire_ok(self, time):
         if len(self.count_fire_ok) == 0:
             self.count_fire_ok.append(1)

@@ -44,7 +44,8 @@ class MplWidget(QWidget):
         self.setLayout(self.vbl)
 
     @draw_plot
-    def build_plot(self, clnames, clvalue, x_putout_queue, y_putout_count, x_putout_queue_ok, y_putout_count_ok, grid=True, **kwargs):
+    def build_plot(self, clnames, clvalue, x_putout_queue, y_putout_count,
+                   x_putout_queue_ok, y_putout_count_ok, grid=True, **kwargs):
         if grid:
             self.canvas.axes_queue_time.grid(color= 'b', linestyle= '--',
                                              linewidth=0.5)

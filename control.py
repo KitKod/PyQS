@@ -8,6 +8,8 @@ def launch_test(mui):
         model_time = int(mui.LEdit_time_of_modeling.text())
 
         fire_inter_max = int(mui.LEdit_dist_fireinter_max.text())
+        if fire_inter_max <= 0:
+            user_warning('The "fire interval" field can not be zero!')
 
         burn_time_max = int(mui.LEdit_dist_burntime_max.text())
         burn_time_min = int(mui.LEdit_dist_burntime_min.text())
