@@ -1,2 +1,0 @@
-# PyQS
-Queuing system

@@ -1,17 +1,32 @@
+from Defs import StatisticHolder
+from collections import Counter
 from PyQt5.QtWidgets import QMessageBox
 
-from .model import random_state
+
+def show_graph(mui):
+    stat_holder = StatisticHolder.getInstance()
+    mui.mpl.build_plot(stat_holder.time_q, stat_holder.size_queue,
+                       stat_holder.time_fire_bad, stat_holder.count_fire_bad,
+                       stat_holder.time_fire_ok, stat_holder.count_fire_ok)
 
 
-def build_plot(mui):
-    max = int(mui.lineEdit_max.text())
-    min = int(mui.lineEdit_min.text())
-    count = int(mui.lineEdit_count.text())
+def show_stat_graphs(mui):
+    stat_holder = StatisticHolder.getInstance()
+    freq = dict(Counter(stat_holder.size_queue))
+    names, values = list(), list()
+    for k, v in freq.items():
+        names.append(str(k))
+        values.append(v)
 
-    if count > 50:
-        msg_box = QMessageBox()
-        msg_box.setText("You have entered a very large value in the count field. \n"
-                        "The maximum possible value is 50.")
-        msg_box.exec()
-    else:
-        mui.mpl.build_bar(*random_state(min, max, count))
+    count_fire_ok = stat_holder.count_fire_ok[-1] if stat_holder.count_fire_ok else 0
+    count_fire_bad = stat_holder.count_fire_bad[-1] if stat_holder.count_fire_bad else 0
+
+    mui.mpl_stat.build_bar(names, values, count_fire_ok, count_fire_bad)
+    stat_holder.clear_stat()
+
+
+def user_warning(msg):
+    msg_box = QMessageBox()
+    msg_box.setText(msg)
+    msg_box.exec()
+
